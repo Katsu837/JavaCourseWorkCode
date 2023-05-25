@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h2>User List</h2>
+{{#users}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{fullName}}</span>
+        <i>{{email}}</i>
+        <a>{{role}}</a>
+        <form action="/adminPage/{{id}}" method="post">
+            <input type="hidden" id="userId" name="userId" value="{{id}}">
+            <input type="submit" value="Change role">
+        </form>
+        <form action="/adminPage/deleteUser/{{id}}" method="post">
+            <input type="hidden" id="userId" name="userId" value="{{id}}">
+            <input type="submit" value="Delete">
+        </form>
+        <br>
+    </div>
+{{/users}}
+
+{{#successMessage}}
+    <div class="alert alert-success">{{successMessage}}</div>
+{{/successMessage}}
+</body>
+</html>
+
+

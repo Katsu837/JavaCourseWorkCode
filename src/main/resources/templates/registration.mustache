@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<head>
+
+</head>
+<body>
+    {{#if param.error}}
+        Invalid username and password.
+    {{/if param.error}}
+    {{#if param.logout}}
+        You have been logged out.
+    {{/if param.logout}}
+
+    <form action="/registration" method="post">
+        <div>
+            <label>Write your full name <input type="text" name="fullName" placeholder="Full name"></label>
+            <label>Write email: <input type="email" name="email" placeholder="Email"> </label>
+            <label>Write password: <input type="password" name="password" placeholder="password"> </label>
+            <input type="submit" value="Registration"/>
+        </div>
+    </form>
+</body>
+</html>

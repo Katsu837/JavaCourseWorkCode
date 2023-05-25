@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h3> Yours cart </h3>
+
+{{#nothingInTheCart}}
+    There are no products in the cart!
+{{/nothingInTheCart}}
+
+{{#productsFromCart}}
+    <div>
+        <h4 class="labelOfProduct">{{name}}</h4>
+        <i class="priceOfProduct">{{price}} rub.</i>
+        <form action="/removeProductFromCart/{{id}}" method="post">
+            <input type="submit" value="Delete"/>
+        </form>
+    </div>
+{{/productsFromCart}}
+    <h3>Price: {{CartPrice}} rub.</h3>
+
+
+</body>
+</html>
+
+

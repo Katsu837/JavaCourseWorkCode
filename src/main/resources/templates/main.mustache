@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+    <div>
+        <a></a>
+    </div>
+    <div>
+        <form action="/login" method="get">
+            <input type="submit" value="Sign In"/>
+        </form>
+
+        <form action="/registration" method="get">
+            <input type="submit" value="Registration"/>
+        </form>
+
+        <form action="/logout" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <div><a href="/cart">Your cart</a></div>
+
+{{#isADMIN}}
+    <div>
+        <a href="/adminPage">View user list</a>
+    </div>
+
+    <div>
+        <form action="/addProduct" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Enter product name"/>
+            <input type="number" name="price" placeholder="Price"/>
+            <input type="file" name="imageFile" placeholder="Add image">
+            <button type="submit"> Add </button>
+        </form>
+    </div>
+{{/isADMIN}}
+
+    <div> Product List </div>
+    <form method="post" action="filter">
+        <input type="text" name="filter">
+        <button type="submit">Search</button>
+    </form>
+    {{#products}}
+        <div class="productsList">
+<!--            <b>{{id}}</b>-->
+            <h4 class="labelOfProduct">{{name}}</h4>
+            <img src={{imageSrc}} width="300" height="200">
+            <br>
+            <i class="priceOfProduct">{{price}} rub.</i>
+            <form action="/addProductToCart/{{id}}" method="post">
+                <button>Add to cart</button>
+            </form>
+            {{#isADMIN}}
+            <form action="deleteProduct/{{id}}" method="post">
+                <button>Delete product</button>
+            </form>
+            {{/isADMIN}}
+        </div>
+    {{/products}}
+</body>
+</html>
+
