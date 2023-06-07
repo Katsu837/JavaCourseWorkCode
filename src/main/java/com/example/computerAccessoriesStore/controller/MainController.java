@@ -38,11 +38,14 @@ public class MainController {
 
         Iterable<Product> products = productRepository.findAll();
         model.addAttribute("products", products);
+        model.addAttribute("userName", user.getFullName())
         return "/main";
     }
 
     @PostMapping("/addProduct")
-    public String addProduct(@RequestParam String name, @RequestParam int price, @RequestParam("imageFile") MultipartFile imageFile, Model model)
+    public String addProduct(@RequestParam String name,
+                             @RequestParam int price,
+                             @RequestParam("imageFile") MultipartFile imageFile, Model model)
     {
         productService.addProduct(name, price, imageFile);
 
